@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <metacharset="UTF-8">
+     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+     <!-- Google Fonts -->
+     <!-- <link hreff="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet"> -->
+
+     <!-- Styles -->
+
+     <link rel="stylesheet" href="CSS/estilos.css">
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <title>Inicio de Sesion</title>
+</head>
+
+<body>
+
+    <!-- Forms -->
+     <div class="container-forms">
+         <!-- Form links -->
+         <ul class="container-tabs">
+             <li class="tab tab-second active"><a href="#log-in">Login</a></li>
+             <li class="tab tab-first"><a href="#sign-up">Sign up</a></li>
+         </ul>
+
+         <!-- Content of the Forms -->
+         <div class="content-tab">
+             <!-- Login -->
+             <div id="log-in">
+                 <h1>Login</h1>
+                 <form action="#" method="post">
+                      <div class="container-input">
+                          <label>
+                              User <span class="req">*</span>
+                          </label>
+                          <input type="text" required>
+                      </div>
+
+                      <div class="container-input">
+                          <label>
+                              Password <span class="req">*</span>
+                          </label>
+                          <input type="password" required>
+                      </div>
+                      <p class="forgot"><a href="#">Forgot your password?</a></p>
+                      <input type="submit" class="button button-block" value="Login">
+                  </form>
+             </div>
+
+             <!-- Register -->
+             <div id="sign-up">
+                 <h1>Sign Up</h1>
+                 <form action="#" method="post">
+                     <div class="row-up">
+                         <div class="container-input">
+                             <label>
+                                 Name <span class="req">*</span>
+                             </label>
+                             <input type="text" required >
+                         </div>
+
+                         <div class="container-input">
+                             <label>
+                                 Last Name <span class="req">*</span>
+                             </label>
+                             <input type="text" required>
+                         </div>
+                     </div>
+                     <div class="container-input">
+                         <label>
+                             User <span class="req">*</span>
+                         </label>
+                         <input type="text" required>
+                     </div>
+                     <div class="container-input">
+                             <label>
+                                 Email <span class="req">*</span>
+                             </label>
+                         <input type="email" required>
+                     </div>
+                     <div class="container-input">
+                         <label>
+                             Password <span class="req">*</span>
+                         </label>
+                         <input type="password" required>
+                     </div>
+
+                     <div class="container-input">
+                         <label>
+                             Repeat Password <span class="req">*</span>
+                         </label>
+                         <input type="password" required>
+                     </div>
+
+                     <input type="submit" class="button button-block" value="Register">
+                 </form>
+             </div>
+         </div>
+     </div>
+
+
+    <script>
+    $(document).ready(function(){
+
+       $(".container-forms").find("input, text").on("keyup blur focus", function (e) {
+
+           var $this = $(this),
+             label = $this.prev("label");
+
+           if (e.type === "keyup") {
+               if ($this.val() === "") {
+                   label.removeClass("active highlight");
+               } else {
+                   label.addClass("active highlight");
+               }
+           } else if (e.type === "blur") {
+               if($this.val() === "") {
+                   label.removeClass("active highlight");
+                   } else {
+                   label.removeClass("highlight");
+                   }
+           } else if (e.type === "focus") {
+               if($this.val() === "") {
+                   label.removeClass("highlight");
+               }
+               else if($this.val() !== "") {
+                   label.addClass("highlight");
+               }
+           }
+
+       });
+
+       $(".tab a").on("click", function (e) {
+
+           e.preventDefault();
+
+           $(this).parent().addClass("active");
+           $(this).parent().siblings().removeClass("active");
+
+           target = $(this).attr("href");
+
+           $(".content-tab > div").not(target).hide();
+
+           $(target).fadeIn(600);
+
+       });
+
+  });
+
+</script>
+
+</body>
+</html>
